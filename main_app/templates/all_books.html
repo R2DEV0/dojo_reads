@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Books Page</title>
+
+    <style>
+        body{
+            width: 1200px;
+        }
+
+        #reviews{
+            display: inline-block;
+            width:400px;
+            margin-left: 50px;
+            margin-right: 100px;
+        }
+
+        #other{
+            display: inline-block;
+            width: 400px;
+            vertical-align: top;
+            margin-top: 90px;
+        }
+
+        #link{
+            display: inline-block;
+            margin-left: 900px;
+        }
+
+        button{
+            display: inline-block;
+            margin-left: 1000px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        #list{
+            border: 1px solid black;
+            height: 300px;
+            width: 300px;
+        }
+
+        h1{
+            margin-bottom: 50px;
+            text-decoration: underline;
+        }
+
+        #recent{
+            border-top: 1px solid black;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <form action="/logout">
+        <button>Logout</button>
+    </form>
+
+    <a href="/add_book" id='link'>Add Book and Review</a>
+
+
+    <div id='reviews'>
+        <h1>Welcome {{ user.user_name }}</h1>
+        <h2>Recent Book Reviews:</h2>
+
+        {% for book in last_three %}
+        <div id = 'recent'>
+            <p><a href="/one_book/{{book.id}}">{{book.book.title}}</a></p>
+            <p><a href="/user_page/{{book.user.id}}">{{book.user.user_name}}</a> says: {{book.comment}}</p>
+            <p>Rating: {{book.rating}} stars</p>
+            <p>{{book.created_at}}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div id='other'>
+        <h2> Other Books with Reviews:</h2>
+        <ul id='list'>
+            {% for book in books %}
+            <li><a href="/one_book/{{book.id}}">{{book.title}}</a></li>
+            {% endfor %}
+        </ul>
+
+    </div>
+
+
+</body>
+
+</html>

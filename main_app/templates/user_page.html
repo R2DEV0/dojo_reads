@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Information</title>
+</head>
+
+<body>
+
+    <form action="/logout">
+        <button>Logout</button>
+    </form>
+
+    <a href="/add_book" id='link'>Add Book and Review</a> <br>
+
+    <a href='/all_books/{{ user.id }}'>Home Page</a>
+
+    <h1>User Name: {{ user.user_name }}</h1>
+    <h1>Name: {{ user.name }}</h1>
+    <h1>Email: {{ user.email }}</h1>
+    <h1>Total Reviews: {{ count }}</h1>
+
+    <h1>Posted Reviews on the following books</h1>
+
+        {% for x in books %}
+    <p><a href="/one_book/{{ x.book.id }}">{{ x.book.title }}</a></p>
+        {% endfor %}
+
+</body>
+
+</html>
